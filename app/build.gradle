@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.neenbedankt.android-apt'
-apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 23
@@ -26,16 +25,19 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField 'String', 'STUDY_BASE_URL', "\"https://webservices.sagebridge.org/\""
-            
+
             // Define STUDY_ID, STUDY_NAME, STUDY_PEM can be defined here or in your local.properties 
             // file. These variables are needed for upload to properly work.
             // RELEASE_STUDY_ID is of type String (e.g. "id-mole-mapper-study")
             // RELEASE_STUDY_NAME is of type String (e.g. "MoleMapper Study")
             // RELEASE_STUDY_PEM_FILE_NAME is of type String, (e.g. "molemapper"). The pem file should 
             // be located at the root directory of your assets folder.
-            buildConfigField 'String', 'STUDY_ID', RELEASE_STUDY_ID
-            buildConfigField 'String', 'STUDY_NAME', RELEASE_STUDY_NAME
-            buildConfigField 'String', 'STUDY_PEM', RELEASE_STUDY_PEM_FILE_NAME
+            buildConfigField 'String', 'STUDY_ID',
+                    project.hasProperty('RELEASE_STUDY_ID') ? project.get('RELEASE_STUDY_ID') : "\"placeholder\""
+            buildConfigField 'String', 'STUDY_NAME',
+                    project.hasProperty('RELEASE_STUDY_NAME') ? project.get('RELEASE_STUDY_NAME') : "\"placeholder\""
+            buildConfigField 'String', 'STUDY_PEM',
+                    project.hasProperty('RELEASE_STUDY_PEM_FILE_NAME') ? project.get('RELEASE_STUDY_PEM_FILE_NAME') : "\"placeholder\""
         }
 
         debug {
@@ -43,16 +45,19 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField 'String', 'STUDY_BASE_URL', "\"https://webservices.sagebridge.org/\""
-            
+
             // Define STUDY_ID, STUDY_NAME, STUDY_PEM can be defined here or in your local.properties 
             // file. These variables are needed for upload to properly work.
             // RELEASE_STUDY_ID is of type String (e.g. "id-mole-mapper-study")
             // RELEASE_STUDY_NAME is of type String (e.g. "MoleMapper Study")
             // RELEASE_STUDY_PEM_FILE_NAME is of type String, (e.g. "molemapper"). The pem file should 
             // be located at the root directory of your assets folder.
-            buildConfigField 'String', 'STUDY_ID', DEBUG_STUDY_ID
-            buildConfigField 'String', 'STUDY_NAME', DEBUG_STUDY_NAME
-            buildConfigField 'String', 'STUDY_PEM', DEBUG_STUDY_PEM_FILE_NAME
+            buildConfigField 'String', 'STUDY_ID',
+                    project.hasProperty('DEBUG_STUDY_ID') ? project.get('DEBUG_STUDY_ID') : "\"placeholder\""
+            buildConfigField 'String', 'STUDY_NAME',
+                    project.hasProperty('DEBUG_STUDY_NAME') ? project.get('DEBUG_STUDY_NAME') : "\"placeholder\""
+            buildConfigField 'String', 'STUDY_PEM',
+                    project.hasProperty('DEBUG_STUDY_PEM_FILE_NAME') ? project.get('DEBUG_STUDY_PEM_FILE_NAME') : "\"placeholder\""
         }
     }
 
@@ -87,7 +92,4 @@ dependencies {
     compile 'com.madgag.spongycastle:pkix:1.54.0.0'
     compile 'pl.charmas.android:android-reactive-location:0.8@aar'
     compile 'com.google.android.gms:play-services-location:8.4.0'
-    compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
-        transitive = true;
-    }
 }

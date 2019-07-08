@@ -49,7 +49,3 @@ pl.charmas.android:android-reactive-location<br />
 com.google.android.gms:play-services-location<br />
 </b>
 - play-services-location allows the app to get the user's location while being conscious of battery life. Android-reactive-location library wraps the location services API’s in Rx Observables.
-
-<b>com.crashlytics.sdk.android:crashlytics</b>
-
-- Crash / Logging library being used during the QA period. This library will be removed at v1.0 release.
