@@ -1,15 +1,13 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
-apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
         applicationId "org.researchstack.molemapper"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 28
         versionCode 9
         versionName "0.9.4"
         multiDexEnabled true
@@ -77,19 +75,28 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.android.support:cardview-v7:23.2.1'
-    compile 'com.android.support:support-v13:23.2.1'
-    compile 'com.android.support:design:23.2.1'
-    compile 'com.android.support:multidex:1.0.1'
-    compile 'org.researchstack:skin:1.0.0.rc3'
-    compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.4.1'
-    apt 'co.touchlab.squeaky:squeaky-processor:0.4.0.0'
-    compile 'com.madgag.spongycastle:core:1.54.0.0'
-    compile 'com.madgag.spongycastle:prov:1.54.0.0'
-    compile 'com.madgag.spongycastle:pkix:1.54.0.0'
-    compile 'pl.charmas.android:android-reactive-location:0.8@aar'
-    compile 'com.google.android.gms:play-services-location:8.4.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'org.researchstack:skin:1.1.1'
+
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:preference-v14:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:support-v13:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:multidex:1.0.3'
+
+    implementation 'com.google.android.gms:play-services-location:8.4.0'
+
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.4.1'
+
+    annotationProcessor 'co.touchlab.squeaky:squeaky-processor:0.4.0.0'
+
+    implementation 'com.madgag.spongycastle:core:1.58.0.0'
+    implementation 'com.madgag.spongycastle:prov:1.58.0.0'
+    implementation 'com.madgag.spongycastle:pkix:1.54.0.0'
+    implementation 'pl.charmas.android:android-reactive-location:0.8@aar'
+
+    testImplementation 'junit:junit:4.12'
+
 }

@@ -67,7 +67,7 @@ public class MoleHistoryActivity extends PinCodeActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.rsb_black_40));
-        toolbar.setNavigationIcon(R.drawable.abc_ic_clear_mtrl_alpha);
+        toolbar.setNavigationIcon(R.drawable.abc_ic_clear_material);
         setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
